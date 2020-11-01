@@ -4,7 +4,7 @@ This is a simple REST API using GWT based token authentication. The API has endp
 
 `composer install`
 
-After this create an empty database on MySQL. You can name it whatever you want. After creating the database run below commands.
+After this create an empty database on MySQL. You can name it whatever you want. After creating the database rename .env-example to .env and adjust your db settings there and run below commands.
 
 `php artisan migrate`
 `php artisan db:seed`
