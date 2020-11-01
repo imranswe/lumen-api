@@ -1,23 +1,30 @@
-# Lumen PHP Framework
+# REST API
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+This is a simple REST API using GWT based token authentication. The API has endpoints for signup, login, user update and listing users. It uses events to log user actions in the system. In order to install and run this run below commands:
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+`composer install`
 
-## Official Documentation
+After this create an empty database on MySQL. You can name it whatever you want. After creating the database run below commands.
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+`php artisan migrate`
+`php artisan db:seed`
 
-## Contributing
+These commands will generate database tables and insert some dummy users. You can register a new user by using `/api/register` post call by providing user JSON object. 
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+`{
+"name": "Jane Doe",
+"email": "jane.doe@example.com",
+"password": "yourSec!ret"
+}`
 
-## Security Vulnerabilities
+### Get Token
+To get token you can use POST `/api/login`
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+`{"email": "jane.doe@example.com", "password": "yourSec!ret"}`
+
+This will produce token which should be passed in as Authorization header to access protected API endpoints.
+
+`Authorization: tokenCopiedFromLoginResponse`
 
 ## License
 
